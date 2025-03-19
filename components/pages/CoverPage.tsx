@@ -1,13 +1,15 @@
 'use client';
 
+import { Pages } from "@/app/page";
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 
 interface BookCoverProps {
   onNext: () => void;
+  navigateTo: (page: Pages) => void;
 }
 
-export default function CoverPage({ onNext }: BookCoverProps) {
+export default function CoverPage({ onNext, navigateTo }: BookCoverProps) {
   return (
     <div className="relative h-screen w-full bg-rustic-brown">
       <motion.nav
@@ -15,10 +17,41 @@ export default function CoverPage({ onNext }: BookCoverProps) {
         animate={{ opacity: 1 }}
         className="fixed top-4 left-1/2 -translate-x-1/2 bg-black/20 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg flex gap-8 text-aged-paper"
       >
+        <button 
+          onClick={() => navigateTo(Pages.PROJECTS)}
+          className="hover:text-amber-200 text-amber-300 transition-colors cursor-pointer"
+        >
+          Projects
+        </button>
+        <button 
+          onClick={() => navigateTo(Pages.SKILLS)}
+          className="hover:text-amber-200 text-amber-300 transition-colors cursor-pointer"
+        >
+          Skills
+        </button>
+        <button 
+          onClick={() => navigateTo(Pages.ABOUT)}
+          className="hover:text-amber-200 text-amber-300 transition-colors cursor-pointer"
+        >
+          About Me
+        </button>
+        <button 
+          onClick={() => navigateTo(Pages.CONTACT)}
+          className="hover:text-amber-200 text-amber-300 transition-colors cursor-pointer"
+        >
+          Contact
+        </button>
+      </motion.nav>
+      {/* <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="fixed top-4 left-1/2 -translate-x-1/2 bg-black/20 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg flex gap-8 text-aged-paper"
+      >
         <button className="hover:text-amber-200 text-amber-300 transition-colors cursor-pointer">Projects</button>
+        <button className="hover:text-amber-200 text-amber-300 transition-colors cursor-pointer">Skills</button>
         <button className="hover:text-amber-200 text-amber-300 transition-colors cursor-pointer">About Me</button>
         <button className="hover:text-amber-200 text-amber-300 transition-colors cursor-pointer">Contact</button>
-      </motion.nav>
+      </motion.nav> */}
 
       <div className="flex flex-col items-center justify-center h-full bg-brown-900 bg-[url(/background3.jpg)] bg-no-repeat bg-center bg-cover bg-opacity-50">
       <div className="bg-[url(/cover3.jpg)] bg-no-repeat bg-center bg-cover bg-opacity-50 w-[50%] h-[100%] flex flex-col items-center justify-center">

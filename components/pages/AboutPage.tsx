@@ -42,16 +42,16 @@ export default function AboutPage({ direction }: AboutPageProps) {
       )}
 
       <motion.div 
-        className="text-center mb-4 mt-8 flex justify-center items-center"
+        className="text-center mt-8 flex justify-center items-center"
         initial={{ y: 20 }}
-        animate={{ y: 0 }}
+        animate={{ y: -30 }}
         transition={{ delay: 0.5 }}
       >
         <div className='w-3/4'>
           <TypewriterText 
             text="About Me" 
             onComplete={() => setStep(1)}
-            className="text-5xl font-bold mb-4 font-serif text-amber-900 border-b-4 border-amber-900"
+            className="text-4xl font-bold font-serif text-amber-900 border-b-4 border-amber-900"
             speed={step > 0 ? 0 : 30}
           />
         </div>
@@ -75,7 +75,7 @@ export default function AboutPage({ direction }: AboutPageProps) {
           className="text-lg mb-8 text-center px-16 cursor-default font-serif text-amber-900"
         >
           <TypewriterText
-            // ref={fullTextRef}
+            ref={fullTextRef}
             text={FULL_TEXT}
             onComplete={() => setStep(3)}
             speed={30}
@@ -88,73 +88,76 @@ export default function AboutPage({ direction }: AboutPageProps) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="flex flex-col justify-start items-start ml-24"
+          className="flex flex-col justify-center items-center"
         >
-          <TimelineItem
-            title="Lakshmi Narain College of Technology"
-            subtitle="CGPA: 8.91"
-            location="Bhopal, Madhya Pradesh"
-            year="July 2019 - June 2023"
-            description="Bachelor of Technology in Computer Science"
-            onClick={() => setSelectedItem({
-              title: "Lakshmi Narain College of Technology",
-              subtitle: "CGPA: 8.91",
-              year: "July 2019 - June 2023",
-              location: "Bhopal, Madhya Pradesh",
-              description: `Bachelor of Technology in Computer Science.
-                            Subjects: Database Management Systems, Data Structures, Algorithms, Operating Systems, Computer Networks, Software Engineering, Web Development, and more.`
-            })}
-          />
-          <TimelineItem
-            title="Accenture"
-            subtitle="Fullstack Developer"
-            location="Pune, Maharashtra"
-            year="July 2023 - March 2025"
-            description="Bachelor of Technology in Computer Science"
-            onClick={() => setSelectedItem({
-              title: "Accenture",
-              subtitle: "Fullstack Developer",
-              year: "July 2023 - March 2025",
-              location: "Pune, Maharashtra",
-              techstack: "React, Node, Express, MongoDB, HTML, CSS, JavaScript",
-              description: `
-                        Developed a responsive internal dashboard using Reactjs for the frontend, improving user interaction by 30% through enhanced UI/UX design. 
-                        Coded and optimized the frontend, ensuring a 25% faster load time and smoother navigation experience for team members. 
-                        Integrated backend APIs built with Expressjs, facilitating seamless communication between frontend and backend`
-            })}
-          />
-          <TimelineItem
-            title="Carwale"
-            subtitle="Associate Software Engineer Intern"
-            location="Remote | Navi Mumbai, Maharashtra"  
-            year="Sep 2022 - March 2023"
-            description=""
-            onClick={() => setSelectedItem({
-              title: "Carwale",
-              subtitle: "Associate Software Engineer Intern",
-              year: "Sep 2022 - March 2023",
-              location: "Remote | Navi Mumbai, Maharashtra",
-              description: `Developed a full-stack internal Quarterly Evaluation dashboard using ASPNET, CSHTML, jQuery, and SQL in the MVC pattern, utilized by over 400+ employees across the company.
-                            Collaborated with a cross-functional team on the design, development and API integration.
-                            Designed high-level architectural flows and implemented low-level functionalities, improving system scalability and reducing technical debt by 25%.
-                            Contributed to an Agile (Scrum) environment, achieving on-time delivery of features in 80% of sprints, ensuring continuous iteration and improvement`
-            })}
-          />
-          <TimelineItem
-            title="Umpteen Innovations"
-            subtitle="Frontend Developer Intern"
-            location="Bhopal, Madhya Pradesh"
-            year="Feb 2022 - May 2022"
-            description=""
-            onClick={() => setSelectedItem({
-              title: "Umpteen Innovations",
-              subtitle: "Frontend Developer Intern",
-              year: "Feb 2022 - May 2022",
-              location: "Bhopal, Madhya Pradesh",
-              description: `Built front-end web applications, while communicating with the client and understanding his needs.
-                            Developed and designed components in React as per requirement.`
-            })}
-          />
+          <div className='w-3/4 flex flex-col justify-center items-center gap-4'>
+
+            <TimelineItem
+              title="Lakshmi Narain College of Technology"
+              subtitle="CGPA: 8.91"
+              location="Bhopal, Madhya Pradesh"
+              year="July 2019 - June 2023"
+              description="Bachelor of Technology in Computer Science"
+              onClick={() => setSelectedItem({
+                title: "Lakshmi Narain College of Technology",
+                subtitle: "CGPA: 8.91",
+                year: "July 2019 - June 2023",
+                location: "Bhopal, Madhya Pradesh",
+                description: `Bachelor of Technology in Computer Science.
+                              Subjects: Database Management Systems, Data Structures, Algorithms, Operating Systems, Computer Networks, Software Engineering, Web Development, and more.`
+              })}
+            />
+            <TimelineItem
+              title="Accenture"
+              subtitle="Fullstack Developer"
+              location="Pune, Maharashtra"
+              year="July 2023 - March 2025"
+              description="Bachelor of Technology in Computer Science"
+              onClick={() => setSelectedItem({
+                title: "Accenture",
+                subtitle: "Fullstack Developer",
+                year: "July 2023 - March 2025",
+                location: "Pune, Maharashtra",
+                techstack: "React, Node, Express, MongoDB, HTML, CSS, JavaScript",
+                description: `
+                          Developed a responsive internal dashboard using Reactjs for the frontend, improving user interaction by 30% through enhanced UI/UX design. 
+                          Coded and optimized the frontend, ensuring a 25% faster load time and smoother navigation experience for team members. 
+                          Integrated backend APIs built with Expressjs, facilitating seamless communication between frontend and backend`
+              })}
+            />
+            <TimelineItem
+              title="Carwale"
+              subtitle="Associate Software Engineer Intern"
+              location="Remote | Navi Mumbai, Maharashtra"  
+              year="Sep 2022 - March 2023"
+              description=""
+              onClick={() => setSelectedItem({
+                title: "Carwale",
+                subtitle: "Associate Software Engineer Intern",
+                year: "Sep 2022 - March 2023",
+                location: "Remote | Navi Mumbai, Maharashtra",
+                description: `Developed a full-stack internal Quarterly Evaluation dashboard using ASPNET, CSHTML, jQuery, and SQL in the MVC pattern, utilized by over 400+ employees across the company.
+                              Collaborated with a cross-functional team on the design, development and API integration.
+                              Designed high-level architectural flows and implemented low-level functionalities, improving system scalability and reducing technical debt by 25%.
+                              Contributed to an Agile (Scrum) environment, achieving on-time delivery of features in 80% of sprints, ensuring continuous iteration and improvement`
+              })}
+            />
+            <TimelineItem
+              title="Umpteen Innovations"
+              subtitle="Frontend Developer Intern"
+              location="Bhopal, Madhya Pradesh"
+              year="Feb 2022 - May 2022"
+              description=""
+              onClick={() => setSelectedItem({
+                title: "Umpteen Innovations",
+                subtitle: "Frontend Developer Intern",
+                year: "Feb 2022 - May 2022",
+                location: "Bhopal, Madhya Pradesh",
+                description: `Built front-end web applications, while communicating with the client and understanding his needs.
+                              Developed and designed components in React as per requirement.`
+              })}
+            />
+          </div>
           {/* Add other TimelineItems */}
         </motion.div>
       )}

@@ -20,7 +20,8 @@ export function TimelineItem({ title, subtitle, year, location, description, del
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: delay + 0.5, duration: 0.5 }}
-      className="relative pl-8 border-l-4 border-amber-700 mb-4 hover:shadow-md cursor-pointer px-4 py-2 w-[85%] group"
+      // className="relative pl-8 border-l-4 border-amber-700 mb-4 hover:shadow-md cursor-pointer px-4 py-2 w-[85%] group"
+      className="w-full relative pl-8 border-l-4 border-amber-700 hover:bg-amber-50 p-2 rounded-lg cursor-pointer"
       onClick={onClick}
     >
       <div className="absolute w-4 h-4 bg-amber-700 rounded-full -left-[10px] top-4 group-hover:bg-amber-900 transition-colors" />

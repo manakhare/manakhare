@@ -19,6 +19,7 @@ module.exports = {
     ],
     theme: {
       extend: {
+        visibility: ['group-hover'],
         fontFamily: {
           serif: ['"Crimson Pro"', 'serif'],
         },

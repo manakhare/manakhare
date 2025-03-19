@@ -7,6 +7,9 @@ import AnimatedPage from '../components/common/AnimatedPage';
 import IndexPage from '../components/pages/IndexPage';
 import AboutPage from '../components/pages/AboutPage';
 import SkillsPage from '@/components/pages/SkillsPage';
+import ProjectsPage from '@/components/pages/ProjectsPage';
+import ContactPage from '@/components/pages/ContactPage';
+import SideNav from '@/components/common/SideNav';
 
 export enum Pages {
   COVER,
@@ -20,67 +23,85 @@ export enum Pages {
 export default function PortfolioBook() {
   const [currentPage, setCurrentPage] = useState<Pages>(Pages.COVER);
   const [direction, setDirection] = useState<number>(1);
+  
+  const navigateTo = (targetPage: Pages) => {
+    const newDirection = targetPage > currentPage ? 1 : -1;
+    setDirection(newDirection);
+    setCurrentPage(targetPage);
+  };
 
   const renderPage = () => {
     switch(currentPage) {
       case Pages.COVER:
-        return <BookCover onNext={() => {
-          setDirection(1);
-          setCurrentPage(Pages.INDEX);
-        }} />;
-        
+        return <BookCover 
+          onNext={() => navigateTo(Pages.INDEX)} 
+          navigateTo={navigateTo} 
+        />;
       case Pages.INDEX:
         return (
           <AnimatedPage
             direction={direction}
-            onNext={() => {
-              setDirection(1);
-              setCurrentPage(Pages.ABOUT);
-            }}
-            onPrev={() => {
-              setDirection(-1);
-              setCurrentPage(Pages.COVER);
-            }}
+            onNext={() => navigateTo(Pages.ABOUT)}
+            onPrev={() => navigateTo(Pages.COVER)}
           >
-            <IndexPage onNext={() => setCurrentPage(Pages.ABOUT)} />
+            <IndexPage 
+              onNext={() => navigateTo(Pages.ABOUT)}
+              navigateTo={navigateTo} />
           </AnimatedPage>
         );
-
       case Pages.ABOUT:
         return (
           <AnimatedPage
             direction={direction}
-            onNext={() => setCurrentPage(Pages.SKILLS)}
-            onPrev={() => {
-              setDirection(-1);
-              setCurrentPage(Pages.INDEX);
-            }}
+            onNext={() => navigateTo(Pages.SKILLS)}
+            onPrev={() => navigateTo(Pages.INDEX)}
           >
+            <SideNav navigateTo={navigateTo} currentPage={currentPage} />
             <AboutPage direction={direction} />
           </AnimatedPage>
         );
-
-        case Pages.SKILLS:
-          return (
-            <AnimatedPage
-                key="skills"
-                direction={direction}
-                onNext={() => setCurrentPage(Pages.PROJECTS)}
-                onPrev={() => {
-                  setDirection(-1);
-                  setCurrentPage(Pages.ABOUT);
-                }}
-              >
-                <SkillsPage 
-                  onNext={() => setCurrentPage(Pages.PROJECTS)}
-                  onPrev={() => {
-                    setDirection(-1);
-                    setCurrentPage(Pages.ABOUT);
-                  }}
-                />
-              </AnimatedPage>
-          )
-
+      case Pages.SKILLS:
+        return (
+          <AnimatedPage
+            direction={direction}
+            onNext={() => navigateTo(Pages.PROJECTS)}
+            onPrev={() => navigateTo(Pages.ABOUT)}
+          >
+            <SkillsPage 
+              onNext={() => navigateTo(Pages.PROJECTS)}
+              onPrev={() => navigateTo(Pages.ABOUT)}
+            />
+            <SideNav navigateTo={navigateTo} currentPage={currentPage} />
+          </AnimatedPage>
+        );
+      case Pages.PROJECTS:
+        return (
+          <AnimatedPage
+            direction={direction}
+            onNext={() => navigateTo(Pages.CONTACT)}
+            onPrev={() => navigateTo(Pages.SKILLS)}
+          >
+            <ProjectsPage 
+              onNext={() => navigateTo(Pages.CONTACT)}
+              onPrev={() => navigateTo(Pages.SKILLS)}
+            />
+            <SideNav navigateTo={navigateTo} currentPage={currentPage} />
+          </AnimatedPage>
+        );
+      case Pages.CONTACT:
+        return (
+          <AnimatedPage
+            direction={direction}
+            onNext={() => navigateTo(Pages.COVER)}
+            onPrev={() => navigateTo(Pages.PROJECTS)}
+          >
+            <ContactPage 
+              onNext={() => navigateTo(Pages.COVER)}
+              onPrev={() => navigateTo(Pages.PROJECTS)}
+            />
+            <SideNav navigateTo={navigateTo} currentPage={currentPage} />
+          </AnimatedPage>
+        );
       default:
         return null;
     }
@@ -95,51 +116,4 @@ export default function PortfolioBook() {
   );
 }
 
-
-
-
-// 'use client';
-
-// import { useState } from 'react';
-// import { AnimatePresence } from 'framer-motion';
-// import BookCover from '../components/BookCover';
-// import BookPage from '../components/BookPage';
-
-// export default function PortfolioBook() {
-//   const [currentPage, setCurrentPage] = useState<number>(0);
-//   const [direction, setDirection] = useState<number>(1);
-
-//   const pages = [
-//     <BookCover key="cover" onNext={() => {
-//       setDirection(1);
-//       setCurrentPage(1);
-//     }} />,
-//     <BookPage key="index" direction={direction} onNext={() => {
-//       setDirection(1);
-//       setCurrentPage(2);
-//     }} onPrev={() => {
-//       setDirection(-1);
-//       setCurrentPage(0);
-//     }}>
-//       <div className='flex flex-col justify-center items-center h-full w-full'>
-//           <h2 className="text-3xl mb-8 text-amber-900 font-bold">Index</h2>
-        
-//         <ul className="space-y-4 w-[70%]">
-//           {['About Me', 'Projects', 'Contact'].map((item, index) => (
-//             <li key={item} className="text-xl hover:text-amber-700 cursor-pointer transition-colors flex w-full flex-row justify-between">
-//               {item} <span className="float-right">pg. {index + 2}</span>
-//             </li>
-//           ))}
-//         </ul>
-//       </div>
-//     </BookPage>
-//   ];
-
-//   return (
-//     <div className="h-screen w-full bg-gray-100">
-//       <AnimatePresence mode='wait'>
-//         {pages[currentPage]}
-//       </AnimatePresence>
-//     </div>
-//   );
-// }
+// Implement active state highlighting for the navbar
