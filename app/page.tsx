@@ -10,15 +10,7 @@ import SkillsPage from '@/components/pages/SkillsPage';
 import ProjectsPage from '@/components/pages/ProjectsPage';
 import ContactPage from '@/components/pages/ContactPage';
 import SideNav from '@/components/common/SideNav';
-
-export enum Pages {
-  COVER,
-  INDEX,
-  ABOUT,
-  SKILLS,
-  PROJECTS,
-  CONTACT
-}
+import {Pages} from '@/types/navigation'
 
 export default function PortfolioBook() {
   const [currentPage, setCurrentPage] = useState<Pages>(Pages.COVER);

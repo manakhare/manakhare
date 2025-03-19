@@ -1,6 +1,6 @@
 'use client';
 
-import { Pages } from "@/app/page";
+import { Pages } from '@/types/navigation';
 
 interface IndexPageProps {
   onNext: () => void;

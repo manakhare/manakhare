@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Pages } from '@/app/page';
+import { Pages } from '@/types/navigation';
 
 interface SideNavProps {
   navigateTo: (page: Pages) => void;
