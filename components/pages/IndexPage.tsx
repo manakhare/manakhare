@@ -1,13 +1,15 @@
 'use client';
 
 import { Pages } from '@/types/navigation';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 interface IndexPageProps {
   onNext: () => void;
+  onPrev: () => void;
   navigateTo: (page: Pages) => void;
 }
 
-export default function IndexPage({ onNext, navigateTo }: IndexPageProps) {
+export default function IndexPage({ onNext, onPrev, navigateTo }: IndexPageProps) {
 
   const indexItems = [
     { label: 'About Me', page: Pages.ABOUT },
@@ -31,6 +33,26 @@ export default function IndexPage({ onNext, navigateTo }: IndexPageProps) {
           </li>
         ))}
       </ul>
+
+      {/* Navigation Controls */}
+      <div className="w-full absolute flex justify-between lg:hidden bottom-75">
+        <div>
+          <button
+            onClick={onPrev}
+            className="flex items-center gap-2 text-3xl text-amber-900 font-semibold cursor-pointer p-3 rounded-full backdrop-blur-md shadow-md hover:shadow-xl bg-opacity-50"
+          >
+            <FaChevronLeft />
+          </button>
+        </div>
+        <div>
+          <button
+            onClick={onNext}
+            className="flex items-center gap-2 text-3xl text-amber-900 font-semibold cursor-pointer p-3 rounded-full backdrop-blur-md shadow-md hover:shadow-xl bg-opacity-50"
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

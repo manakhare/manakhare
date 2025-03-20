@@ -21,16 +21,16 @@ export default function SideNav({ navigateTo, currentPage }: SideNavProps) {
     <motion.nav 
       initial={{ x: -100 }}
       animate={{ x: 0 }}
-      className="fixed left-4 top-1/2 -translate-y-1/2 z-50"
+      className="hidden lg:block fixed left-0 p-2 pr-4 top-1/2 -translate-y-1/2 z-50 h-[60%] flex flex-col gap-4 items-center justify-center rounded-tr-2xl rounded-br-2xl"
     >
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col justify-center items-center gap-4 h-full">
         {navItems.map((item) => (
           <motion.div
             key={item.page}
             initial={{ width: 40, borderRadius: 9999 }}
             whileHover={{ width: 130, borderRadius: 12 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            className="h-10 cursor-pointer relative overflow-hidden shadow-lg"
+            transition={{ type: 'spring', stiffness: 150, damping: 20 }}
+            className="h-10 cursor-pointer relative overflow-hidden shadow-lg flex items-center justify-center"
             onClick={() => navigateTo(item.page)}
           >
             <div className="absolute inset-0 flex items-center pl-2">

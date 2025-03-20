@@ -38,6 +38,7 @@ export default function PortfolioBook() {
           >
             <IndexPage 
               onNext={() => navigateTo(Pages.ABOUT)}
+              onPrev={() => navigateTo(Pages.COVER)}
               navigateTo={navigateTo} />
           </AnimatedPage>
         );
@@ -49,7 +50,10 @@ export default function PortfolioBook() {
             onPrev={() => navigateTo(Pages.INDEX)}
           >
             <SideNav navigateTo={navigateTo} currentPage={currentPage} />
-            <AboutPage direction={direction} />
+            <AboutPage 
+              direction={direction} 
+              onNext={() => navigateTo(Pages.SKILLS)} 
+              onPrev={() => navigateTo(Pages.INDEX)}/>
           </AnimatedPage>
         );
       case Pages.SKILLS:

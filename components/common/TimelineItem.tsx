@@ -25,9 +25,9 @@ export function TimelineItem({ title, subtitle, year, location, description, del
       onClick={onClick}
     >
       <div className="absolute w-4 h-4 bg-amber-700 rounded-full -left-[10px] top-4 group-hover:bg-amber-900 transition-colors" />
-      <div>
-        <h3 className="text-2xl font-bold text-amber-900 group-hover:text-amber-700 transition-colors">{title}</h3>
-        <p className="text-lg text-amber-800">{subtitle}</p>
+      <div className="">
+        <h3 className="text-lg lg:text-2xl font-bold text-amber-900 group-hover:text-amber-700 transition-colors">{title}</h3>
+        <p className="text-sm text-amber-800">{subtitle}</p>
         <div className="hidden flex flex-row justify-between mt-2">
           <p className="text-sm text-amber-700">{year}</p>
           <p className="text-sm text-amber-800">{location}</p>
