@@ -52,7 +52,7 @@ export default function AnimatedPage({ children, direction, onNext, onPrev }: An
           style={{ transformStyle: 'preserve-3d' }}
         >
           <div className="w-[100%] lg:w-[50%] h-full relative">
-            <div className="w-full h-full flex justify-center items-center bg-aged-paper ml-auto p-12 shadow-book-page bg-[url(/page1.jpg)] bg-no-repeat bg-center bg-cover bg-opacity-50">
+            <div className="w-full h-full flex justify-center items-center bg-aged-paper ml-auto p-12 shadow-book-page bg-[url(/page7.jpg)] bg-no-repeat bg-center bg-cover bg-opacity-50">
               {children}
 
               {/* <div className="absolute bottom-10 left-8 right-8 flex justify-center"> */}
@@ -87,21 +87,6 @@ export default function AnimatedPage({ children, direction, onNext, onPrev }: An
                   </button>
                 </div>
 
-
-                {/* <div className="bg-black z-100 flex justify-between items-center w-full">
-                  <button
-                    onClick={onPrev}
-                    className="flex items-center gap-2 text-3xl text-amber-900 font-semibold cursor-pointer p-4 rounded-full backdrop-blur-md shadow-md hover:shadow-xl bg-opacity-50"
-                  >
-                    ←
-                  </button>
-                  <button
-                    onClick={onNext}
-                    className="flex items-center gap-2 text-3xl text-amber-900 font-semibold cursor-pointer p-4 rounded-full backdrop-blur-md shadow-md hover:shadow-xl bg-opacity-50"
-                  >
-                    →
-                  </button>
-                </div> */}
 
               </div>
             </div>

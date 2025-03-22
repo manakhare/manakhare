@@ -6,6 +6,9 @@ import { FaGithub, FaExternalLinkAlt, FaChevronLeft, FaChevronRight } from 'reac
 import { Modal } from '../common/Modal';
 import { ProjectModal } from '../common/ProjectModal';
 import useScreenSize from '@/hooks/useScreenSize';
+import { Pages } from '@/types/navigation';
+import { TiThMenu } from 'react-icons/ti';
+import { MobileNav } from '../common/MobileNav';
 
 interface Project {
   name: string;
@@ -19,12 +22,13 @@ interface Project {
 interface ProjectsPageProps {
   onNext: () => void;
   onPrev: () => void;
+  navigateTo: (page: Pages) => void;
 }
 
 const projects: Project[] = [
   {
     name: 'Medium',
-    description: 'E-commerce platform with real-time analytics',
+    description: 'Blogging application',
     github: '#',
     demo: '#',
     techStack: ['React', 'Node.js', 'MongoDB', 'Redis'],
@@ -32,7 +36,7 @@ const projects: Project[] = [
   },
   {
     name: 'Let Us Chat',
-    description: 'E-commerce platform with real-time analytics',
+    description: 'Realtime chat app',
     github: '#',
     demo: '#',
     techStack: ['React', 'Node.js', 'MongoDB', 'Redis'],
@@ -40,7 +44,7 @@ const projects: Project[] = [
   },
   {
     name: 'Whizz',
-    description: 'E-commerce platform with real-time analytics',
+    description: 'An application that triggers a list of actions if an event happens',
     github: '#',
     demo: '#',
     techStack: ['React', 'Node.js', 'MongoDB', 'Redis'],
@@ -48,7 +52,7 @@ const projects: Project[] = [
   },
   {
     name: 'Expense Tracker',
-    description: 'E-commerce platform with real-time analytics',
+    description: 'Track your expenses using this application',
     github: '#',
     demo: '#',
     techStack: ['React', 'Node.js', 'MongoDB', 'Redis'],
@@ -56,7 +60,7 @@ const projects: Project[] = [
   },
   {
     name: 'Threads',
-    description: 'E-commerce platform with real-time analytics',
+    description: 'A social media website',
     github: '#',
     demo: '#',
     techStack: ['React', 'Node.js', 'MongoDB', 'Redis'],
@@ -65,15 +69,33 @@ const projects: Project[] = [
   // Add more projects
 ];
 
-export default function ProjectsPage({ onNext, onPrev }: ProjectsPageProps) {
+export default function ProjectsPage({ onNext, onPrev, navigateTo }: ProjectsPageProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [headingAnimationComplete, setHeadingAnimationComplete] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const screenSize = useScreenSize();
   const iconSize = screenSize === 'small' || screenSize === 'medium' ? 16 : 24;
   const topSpace = screenSize === 'small' || screenSize === 'medium' ? -40 : -40;
 
   return (
-    <div className="w-full h-full flex flex-col items-center p-8 ">
+    <div className="w-full h-full flex flex-col items-center lg:p-8 p-4">
+
+      <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className='lg:hidden fixed absolute w-10 h-10 top-8 right-8 bg-amber-900 rounded-full border-2 border-amber-100'
+        onClick={() => setIsOpen(true)}
+      >
+        <span className='w-full h-full flex justify-center items-center text-amber-100 text-xl'><TiThMenu /></span>
+      </motion.nav>
+
+      {
+        isOpen && (screenSize === 'small' || screenSize === 'medium') &&
+        (
+          <MobileNav isOpen={isOpen} onClose={() => setIsOpen(false)} navigateTo={navigateTo} />
+        )
+      }
+
       <div className='w-3/4'>
         <AnimatePresence>
           <motion.h2
@@ -98,13 +120,13 @@ export default function ProjectsPage({ onNext, onPrev }: ProjectsPageProps) {
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.2 }}
-                className="w-full bg-amber-100 lg:bg-transparent lg:w-3/4 relative pl-6 lg:pl-8 border-l-4 border-amber-700 hover:bg-amber-50 p-3 lg:p-4 rounded-lg cursor-pointer"
+                className="w-full bg-amber-50 lg:bg-transparent lg:w-3/4 relative pl-6 lg:pl-8 border-l-4 border-amber-700 hover:bg-amber-50 p-3 lg:p-4 rounded-lg cursor-pointer"
                 onClick={() => setSelectedProject(project)}
               >
                 <div className="absolute left-[-14px] top-1/2 transform -translate-y-1/2 w-6 h-6 bg-amber-700 rounded-full border-4 border-amber-50" />
 
                 <div className="flex justify-between items-center">
-                  <h3 className="text-xl lg:text-2xl font-semibold text-amber-900">{project.name}</h3>
+                  <h3 className="text-xl lg:text-2xl font-semibold font-serif text-amber-900">{project.name}</h3>
                   <div className="flex gap-4">
                     <a href={project.github} target="_blank" rel="noopener noreferrer"
                       className="text-amber-700 hover:text-amber-900"
@@ -118,7 +140,7 @@ export default function ProjectsPage({ onNext, onPrev }: ProjectsPageProps) {
                     </a>
                   </div>
                 </div>
-                <p className="hidden lg:block text-amber-800 mt-2">{project.description}</p>
+                <p className="text-amber-800">{project.description}</p>
               </motion.div>
             ))}
           </div>
@@ -170,7 +192,7 @@ export default function ProjectsPage({ onNext, onPrev }: ProjectsPageProps) {
       )}
 
       {/* Navigation Controls */}
-      <div className="lg:hidden w-full absolute flex justify-between items-center bottom-75 lg:hidden">
+      <div className="lg:hidden w-full absolute flex justify-between bottom-75 lg:hidden">
         <div className=''>
           <button
             onClick={onPrev}

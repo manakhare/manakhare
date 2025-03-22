@@ -7,20 +7,25 @@ import { TimelineItem } from '../common/TimelineItem';
 import { Modal } from '../common/Modal';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import useScreenSize from '@/hooks/useScreenSize';
+import { Pages } from '@/types/navigation';
+import { MobileNav } from '../common/MobileNav';
+import { TiThMenu } from 'react-icons/ti';
 
 interface AboutPageProps {
   direction: number;
   onNext: () => void;
   onPrev: () => void;
+  navigateTo: (page: Pages) => void;
 }
 
 const FULL_TEXT = `I am a full stack developer. I enjoy the process of designing and building applications and watching it all come together. I have worked in both a service and product company and have seen the best of both worlds. I have worked with MERN stack, React.js, Node.js, Docker, Redis, Kafka, Postgresql, Express.js and MongoDB, HTML, CSS, JavaScript, and am currently getting to know AI deeply. Here is all that you need to know about me.`;
 
-export default function AboutPage({ direction, onNext, onPrev }: AboutPageProps) {
+export default function AboutPage({ direction, onNext, onPrev, navigateTo }: AboutPageProps) {
   const [step, setStep] = useState(0);
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [showTimeline, setShowTimeline] = useState(false);
   const fullTextRef = useRef<{ skipAnimation: () => void }>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const screenSize = useScreenSize();
 
   const handleClick = () => {
@@ -40,7 +45,7 @@ export default function AboutPage({ direction, onNext, onPrev }: AboutPageProps)
     if (screenSize === 'large') {
       // Desktop animation sequence
       if (step === 2) {
-        const timer = setTimeout(() => setStep(3), 1000);
+        const timer = setTimeout(() => setStep(3), 200);
         return () => clearTimeout(timer);
       }
     } else {
@@ -56,6 +61,23 @@ export default function AboutPage({ direction, onNext, onPrev }: AboutPageProps)
       className="w-full max-w-2xl "
       onClick={handleClick}
     >
+      <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className='lg:hidden fixed absolute w-10 h-10 top-8 right-8 bg-amber-900 rounded-full border-2 border-amber-100'
+        onClick={() => setIsOpen(true)}
+      >
+        <span className='w-full h-full flex justify-center items-center text-amber-100 text-xl'><TiThMenu /></span>
+      </motion.nav>
+
+      {
+        isOpen && (screenSize === 'small' || screenSize === 'medium') &&
+        (
+          <MobileNav isOpen={isOpen} onClose={() => setIsOpen(false)} navigateTo={navigateTo} />
+        )
+      }
+
+      
       {selectedItem && (
         <Modal
           {...selectedItem}
@@ -63,12 +85,12 @@ export default function AboutPage({ direction, onNext, onPrev }: AboutPageProps)
         />
       )}
 
-      <motion.div 
+      <motion.div
         className="text-center mt-8 flex justify-center items-center"
         initial={{ y: 20 }}
         animate={{ y: -30 }}
         transition={{ delay: 0.5 }}
-        >
+      >
         <div className='w-3/4'>
           <TypewriterText
             text="About Me"
@@ -98,7 +120,7 @@ export default function AboutPage({ direction, onNext, onPrev }: AboutPageProps)
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-sm lg:text-lg mb-8 text-center px-4 md:px-16"
+              className="text-sm lg:text-lg mb-4 text-center px-4 md:px-16 text-amber-800 font-serif"
             >
               {FULL_TEXT}
             </motion.div>
@@ -113,7 +135,7 @@ export default function AboutPage({ direction, onNext, onPrev }: AboutPageProps)
           animate={{ opacity: 1 }}
           className="flex flex-col justify-center items-center"
         >
-          <div className='w-[85%] lg:w-3/4 flex flex-col justify-center items-center gap-4'>
+          <div className='w-[90%] lg:w-3/4 flex flex-col justify-center items-center gap-4'>
 
             <TimelineItem
               title="Lakshmi Narain College of Technology"

@@ -5,10 +5,15 @@ import { useState } from 'react';
 import { FaLinkedin, FaGithub, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 import { FiMail } from 'react-icons/fi';
+import { Pages } from '@/types/navigation';
+import useScreenSize from '@/hooks/useScreenSize';
+import { TiThMenu } from 'react-icons/ti';
+import { MobileNav } from '../common/MobileNav';
 
 interface ContactPageProps {
   onNext: () => void;
   onPrev: () => void;
+  navigateTo: (page: Pages) => void;
 }
 
 const contactMethods = [
@@ -38,11 +43,30 @@ const contactMethods = [
   }
 ];
 
-export default function ContactPage({ onNext, onPrev }: ContactPageProps) {
+export default function ContactPage({ onNext, onPrev, navigateTo }: ContactPageProps) {
   const [headingAnimationComplete, setHeadingAnimationComplete] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const screenSize = useScreenSize();
 
   return (
     <div className="w-full h-full flex flex-col items-center p-8">
+
+      <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className='lg:hidden fixed absolute w-10 h-10 top-8 right-8 bg-amber-900 rounded-full border-2 border-amber-100'
+        onClick={() => setIsOpen(true)}
+      >
+        <span className='w-full h-full flex justify-center items-center text-amber-100 text-xl'><TiThMenu /></span>
+      </motion.nav>
+
+      {
+        isOpen && (screenSize === 'small' || screenSize === 'medium') &&
+        (
+          <MobileNav isOpen={isOpen} onClose={() => setIsOpen(false)} navigateTo={navigateTo} />
+        )
+      }
+
       <div className='w-full lg:w-3/4'>
         <AnimatePresence>
           <motion.h2
