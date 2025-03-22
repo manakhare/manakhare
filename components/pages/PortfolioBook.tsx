@@ -52,6 +52,7 @@ export default function PortfolioBook() {
             <SideNav navigateTo={navigateTo} currentPage={currentPage} />
             <AboutPage 
               direction={direction} 
+              navigateTo={navigateTo}
               onNext={() => navigateTo(Pages.SKILLS)} 
               onPrev={() => navigateTo(Pages.INDEX)}/>
           </AnimatedPage>
@@ -64,6 +65,7 @@ export default function PortfolioBook() {
             onPrev={() => navigateTo(Pages.ABOUT)}
           >
             <SkillsPage 
+              navigateTo={navigateTo}
               onNext={() => navigateTo(Pages.PROJECTS)}
               onPrev={() => navigateTo(Pages.ABOUT)}
             />
@@ -78,6 +80,7 @@ export default function PortfolioBook() {
             onPrev={() => navigateTo(Pages.SKILLS)}
           >
             <ProjectsPage 
+              navigateTo={navigateTo}
               onNext={() => navigateTo(Pages.CONTACT)}
               onPrev={() => navigateTo(Pages.SKILLS)}
             />
@@ -92,6 +95,7 @@ export default function PortfolioBook() {
             onPrev={() => navigateTo(Pages.PROJECTS)}
           >
             <ContactPage 
+              navigateTo={navigateTo}
               onNext={() => navigateTo(Pages.COVER)}
               onPrev={() => navigateTo(Pages.PROJECTS)}
             />
