@@ -86,7 +86,7 @@ export default function Entry() {
                   </Link>
                 </div>
                 <div className="py-2 px-4 bg-amber-900 text-white rounded-lg hover:bg-amber-800 cursor-pointer">
-                  <button className="cursor-pointer flex gap-2 items-center justify-center"><span><IoMdDownload /></span>Download</button>
+                  <button className="cursor-pointer flex gap-2 items-center justify-center"><span><IoMdDownload /></span>Resume</button>
                 </div>
               </div>
             </motion.h2>

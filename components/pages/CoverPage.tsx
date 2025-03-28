@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { FiArrowRight } from "react-icons/fi";
 import { TiThMenu } from 'react-icons/ti';
 import {MobileNav} from '@/components/common/MobileNav'
+import SideNav from '../common/SideNav';
 
 interface BookCoverProps {
   onNext: () => void;
@@ -19,7 +20,7 @@ export default function CoverPage({ onNext, navigateTo }: BookCoverProps) {
 
   return (
     <div className="relative h-screen w-full bg-rustic-brown">
-      <motion.nav
+      {/* <motion.nav
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="fixed hidden lg:block top-4 left-1/2 -translate-x-1/2 bg-black/20 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg lg:flex gap-8 text-aged-paper"
@@ -48,8 +49,9 @@ export default function CoverPage({ onNext, navigateTo }: BookCoverProps) {
         >
           Contact
         </button>
-      </motion.nav>
+      </motion.nav> */}   
 
+      <SideNav navigateTo={navigateTo} currentPage={Pages.COVER}/>
 
       <motion.nav
         initial={{ opacity: 0 }}

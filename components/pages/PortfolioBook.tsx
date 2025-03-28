@@ -25,10 +25,15 @@ export default function PortfolioBook() {
   const renderPage = () => {
     switch(currentPage) {
       case Pages.COVER:
-        return <BookCover 
-          onNext={() => navigateTo(Pages.INDEX)} 
-          navigateTo={navigateTo} 
-        />;
+        return( 
+          <>
+            <SideNav navigateTo={navigateTo} currentPage={currentPage} />
+            <BookCover 
+              onNext={() => navigateTo(Pages.INDEX)} 
+              navigateTo={navigateTo} 
+            />
+          </>
+      );
       case Pages.INDEX:
         return (
           <AnimatedPage
@@ -36,6 +41,7 @@ export default function PortfolioBook() {
             onNext={() => navigateTo(Pages.ABOUT)}
             onPrev={() => navigateTo(Pages.COVER)}
           >
+            <SideNav navigateTo={navigateTo} currentPage={currentPage} />
             <IndexPage 
               onNext={() => navigateTo(Pages.ABOUT)}
               onPrev={() => navigateTo(Pages.COVER)}

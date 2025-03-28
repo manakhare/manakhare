@@ -89,6 +89,8 @@ export default function SideNav({ navigateTo, currentPage }: SideNavProps) {
   const router = useRouter();
 
     const navItems = [
+      { initial: 'C', name: 'Cover', page: Pages.COVER },
+      { initial: 'I', name: 'Index', page: Pages.INDEX },
       { initial: 'A', name: 'About', page: Pages.ABOUT },
       { initial: 'S', name: 'Skills', page: Pages.SKILLS },
       { initial: 'P', name: 'Projects', page: Pages.PROJECTS },
@@ -98,7 +100,7 @@ export default function SideNav({ navigateTo, currentPage }: SideNavProps) {
     const navItems_secondary = [
       {initial: 'H', name: 'Home', page: '/'},
       {initial: 'C', name: 'Classic', page: '/classic'},
-      {initial: 'D', name: 'Download', page: '/download'},
+      {initial: 'R', name: 'Resume', page: '/resume'},
     ]
 
     return (

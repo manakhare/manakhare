@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MobileNav } from '../common/MobileNav';
 import { TiThMenu } from 'react-icons/ti';
+import SideNav from '../common/SideNav';
 
 interface IndexPageProps {
   onNext: () => void;
@@ -27,6 +28,7 @@ export default function IndexPage({ onNext, onPrev, navigateTo }: IndexPageProps
 
   return (
     <div className='flex flex-col justify-center items-center h-full w-full'>
+      <SideNav navigateTo={navigateTo} currentPage={Pages.COVER}/>
       <motion.nav
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

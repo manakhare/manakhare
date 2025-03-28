@@ -18,10 +18,11 @@ export const MobileNav = ({ isOpen, onClose, navigateTo }: MobileNavProps) => {
         { name: 'Home', path: '/' },
         { name: 'Classic', path: '/classic' },
         { name: 'Bookish', path: '/bookish' },
-        { name: 'Download', path: '/download' },
+        { name: 'Resume', path: '/resume' },
     ];
     
     const menuItems_secondary = [
+        { name: 'Book Cover', path: Pages.COVER },
         { name: 'About', path: Pages.ABOUT },
         { name: 'Projects', path: Pages.PROJECTS },
         { name: 'Skills', path: Pages.SKILLS },

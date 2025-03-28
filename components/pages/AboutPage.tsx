@@ -18,7 +18,11 @@ interface AboutPageProps {
   navigateTo: (page: Pages) => void;
 }
 
-const FULL_TEXT = `I am a full stack developer. I enjoy the process of designing and building applications and watching it all come together. I have worked in both a service and product company and have seen the best of both worlds. I have worked with MERN stack, React.js, Node.js, Docker, Redis, Kafka, Postgresql, Express.js and MongoDB, HTML, CSS, JavaScript, and am currently getting to know AI deeply. Here is all that you need to know about me.`;
+const FULL_TEXT = `I am a full stack developer.
+ I enjoy the process of designing and building applications and watching it all come together.
+  I have worked in both a service and product company and have seen the best of both worlds.
+   I have worked with MERN stack, React.js, Node.js, Docker, Redis, Kafka, Postgresql, Express.js and MongoDB, HTML, CSS, JavaScript, and am currently getting to know AI deeply.
+    Here is all that you need to know about me.`;
 
 export default function AboutPage({ direction, onNext, onPrev, navigateTo }: AboutPageProps) {
   const [step, setStep] = useState(0);
