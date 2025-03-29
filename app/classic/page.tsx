@@ -11,6 +11,8 @@ import Link from 'next/link';
 
 
 
+
+
 export default function Classic() {
   return (
     <div className='w-screen min-h-screen bg-amber-50 flex flex-col items-center justify-center scroll-smooth'>
@@ -76,7 +78,7 @@ export default function Classic() {
           <Projects />
         </div>
 
-        <div id='experience' className='w-full'>
+        <div id='experience' className='w-full flex items-center justify-center border-8 border-amber-800 bg-amber-800 rounded-md my-10 py-10'>
           <Experience />
         </div>
 

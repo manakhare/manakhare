@@ -54,7 +54,7 @@ function Skills() {
                         // animate={{ opacity: 1, y: 10 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: false, amount: 0.2 }}
-                        className="text-3xl lg:text-4xl font-bold text-amber-50 w-full flex justify-center items-center font-serif border-b-4 border-amber-50"
+                        className="text3xl lg:text-5xl font-bold text-amber-50 w-full flex justify-center items-center font-serif uppercase tracking-wider"
                     >
                         Skills
                     </motion.h2>
