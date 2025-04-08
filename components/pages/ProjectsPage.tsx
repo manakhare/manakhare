@@ -14,9 +14,9 @@ interface Project {
   name: string;
   description: string;
   github: string;
-  demo: string;
+  demo?: string;
   techStack: string[];
-  detailedDescription: string;
+  detailedDescription: string[];
 }
 
 interface ProjectsPageProps {
@@ -29,43 +29,82 @@ const projects: Project[] = [
   {
     name: 'Medium',
     description: 'Blogging application',
-    github: '#',
+    github: 'https://github.com/manakhare/medium',
     demo: '#',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Redis'],
-    detailedDescription: 'Full-stack e-commerce solution with...'
+    techStack: ['ReactJs', 'HonoJs', 'Recoil', 'Postgres', 'Prisma', 'TailwindCSS', 'Cloudflare workers', 'JWT'],
+    detailedDescription: [
+      "A medium clone, with proper authentication and authorization",
+      "Create, Read, Update, Delete posts efficiently",
+      "View and edit your profile details",
+      "A feed of posts from all the registered users",
+      "View all posts by you",
+      "Logout"
+    ],
   },
   {
     name: 'Let Us Chat',
     description: 'Realtime chat app',
-    github: '#',
+    github: 'https://github.com/manakhare/let-us-chat',
     demo: '#',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Redis'],
-    detailedDescription: 'Full-stack e-commerce solution with...'
+    techStack: ['ReactJs', 'Node.js', 'Postgres', 'Prisma', 'Redis', 'Kafka', 'Socket.io', 'TailwindCSS', 'Docker', 'JWT'],
+    detailedDescription: [
+      'Signin/login through google authentication',
+      "Signin using Google authentication",
+      'Create a chatting room',
+      'Invite friends to join the chat by copying the chat link and sharing it with them.',
+      'Chat real-time',
+      'Edit/Delete a chatting room',
+      'View a list of all the chat rooms that you\'ve created on the dashboard.',
+      'Continue chatting from where you left out.',
+      'Sign out',
+    ]
   },
   {
     name: 'Whizz',
-    description: 'An application that triggers a list of actions if an event happens',
-    github: '#',
+    description: 'A workflow automation platform - inspired by Zapier',
+    github: 'https://github.com/manakhare/whizz',
     demo: '#',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Redis'],
-    detailedDescription: 'Full-stack e-commerce solution with...'
+    techStack: ['NextJs', 'Node.js', 'Microservices', 'Polyrepo', 'Kafka', 'Docker', 'Postgres', 'Prisma', 'TailwindCSS', 'JWT'],
+    detailedDescription: [
+      'Authenticated signin/signup',
+      "Secure Authentication (Sign-up & Login)",
+      "CRUD operations on your automation flows (Whizz)",
+      "Dashboard to view automation flows in tabular format",
+      "Ability to create dynamic workflows: triggers followed by asynchronous actions",
+      "Webhook integration for dynamic data handling",
+      "Robust and secure Logout functionality",
+    ]
+  },
+  {
+    name: 'Bookish Portfolio',
+    description: 'Portfolio website',
+    github: 'https://github.com/manakhare/manakhare',
+    demo: '#',
+    techStack: ['NextJs', 'ReactJs', 'Tailwindcss', 'Framer-motion', 'Typescript'],
+    detailedDescription: [
+      'A portfolio website built using Next.js and Tailwind CSS. It showcases my projects, skills, and experience in a visually appealing manner. The website is responsive and optimized for performance.'
+    ]
   },
   {
     name: 'Expense Tracker',
-    description: 'Track your expenses using this application',
-    github: '#',
+    description: 'Track your expenses',
+    github: 'https://github.com/manakhare/Track-expenses-react',
     demo: '#',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Redis'],
-    detailedDescription: 'Full-stack e-commerce solution with...'
+    techStack: ['React', 'Javascript'],
+    detailedDescription: [
+      'An expense tracking application where you can add your expenses and view them in a list.',
+      'You can also remove the expenses from the list.',
+      'The application is built using React and JavaScript, and it provides a simple and intuitive interface for managing your expenses.'
+    ]
   },
-  {
-    name: 'Threads',
-    description: 'A social media website',
-    github: '#',
-    demo: '#',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Redis'],
-    detailedDescription: 'Full-stack e-commerce solution with...'
-  },
+  // {
+  //   name: 'Threads',
+  //   description: 'A social media website',
+  //   github: '#',
+  //   demo: '#',
+  //   techStack: ['React', 'Node.js', 'MongoDB', 'Redis'],
+  //   detailedDescription: ['Full-stack e-commerce solution with...']
+  // },
   // Add more projects
 ];
 
@@ -75,7 +114,7 @@ export default function ProjectsPage({ onNext, onPrev, navigateTo }: ProjectsPag
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const screenSize = useScreenSize();
   const iconSize = screenSize === 'small' || screenSize === 'medium' ? 16 : 24;
-  const topSpace = screenSize === 'small' || screenSize === 'medium' ? -40 : -40;
+  const topSpace = screenSize === 'small' || screenSize === 'medium' ? -80 : -40;
 
   return (
     <div className="w-full h-full flex flex-col items-center lg:p-8 p-4">
@@ -96,29 +135,31 @@ export default function ProjectsPage({ onNext, onPrev, navigateTo }: ProjectsPag
         )
       }
 
-      <div className='w-3/4'>
-        <AnimatePresence>
-          <motion.h2
-            key="projects-heading"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: headingAnimationComplete ? topSpace : 0 }}
-            transition={{ duration: 0.8 }}
-            onAnimationComplete={() => setHeadingAnimationComplete(true)}
-            className="text-3xl mt-16 lg:mt-0 lg:text-4xl font-bold text-amber-900 w-full flex justify-center items-center font-serif border-b-4 border-amber-900"
-          >
-            Projects
-          </motion.h2>
-        </AnimatePresence>
-      </div>
+      
+        <div className='w-3/4 mb-0'>
+          <AnimatePresence>
+            <motion.h2
+              key="projects-heading"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: headingAnimationComplete ? topSpace : 0 }}
+              transition={{ duration: 0.8 }}
+              onAnimationComplete={() => setHeadingAnimationComplete(true)}
+              className="text-3xl mt-16 lg:mt-0 lg:text-4xl font-bold text-amber-900 w-full flex justify-center items-center font-serif border-b-4 border-amber-900"
+            >
+              Projects
+            </motion.h2>
+          </AnimatePresence>
+        </div>
+      
 
       {headingAnimationComplete && (
-        <div className="w-full max-w-4xl space-y-4">
+        <div className="w-full max-w-4xl space-y-4 mt-0">
           <div className='w-full flex flex-col justify-center items-center gap-6'>
             {projects.map((project, index) => (
               <motion.div
                 key={project.name}
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, x: -50, y: 0 }}
+                animate={{ opacity: 1, x: 0, y:(screenSize === 'small' || screenSize === 'medium') ? -40 : 0 }}
                 transition={{ delay: index * 0.2 }}
                 className="w-full bg-amber-50 lg:bg-transparent lg:w-3/4 relative pl-6 lg:pl-8 border-l-4 border-amber-700 hover:bg-amber-50 p-3 lg:p-4 rounded-lg cursor-pointer"
                 onClick={() => setSelectedProject(project)}
@@ -133,11 +174,11 @@ export default function ProjectsPage({ onNext, onPrev, navigateTo }: ProjectsPag
                       onClick={(e) => e.stopPropagation()}>
                       <FaGithub size={iconSize} />
                     </a>
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer"
+                    {project.demo !== "#" && <a href={project.demo} target="_blank" rel="noopener noreferrer"
                       className="text-amber-700 hover:text-amber-900"
                       onClick={(e) => e.stopPropagation()}>
                       <FaExternalLinkAlt size={iconSize} />
-                    </a>
+                    </a>}
                   </div>
                 </div>
                 <p className="text-amber-800">{project.description}</p>
@@ -165,10 +206,10 @@ export default function ProjectsPage({ onNext, onPrev, navigateTo }: ProjectsPag
                   className="flex items-center gap-1 text-amber-700 hover:text-amber-900">
                   <FaGithub /> Github
                 </a>
-                <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer"
+                {selectedProject.demo !== "#" && <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-1 text-amber-700 hover:text-amber-900">
                   <FaExternalLinkAlt /> Demo
-                </a>
+                </a>}
               </div>
             </div>
 
@@ -185,7 +226,9 @@ export default function ProjectsPage({ onNext, onPrev, navigateTo }: ProjectsPag
 
             <div>
               <h4 className="text-lg font-semibold text-amber-900">Description</h4>
-              <p className="text-amber-800 mt-2">{selectedProject.detailedDescription}</p>
+              <ul className="text-amber-800 mt-2 list-disc pl-5">{selectedProject.detailedDescription.map((point, index) => (
+                <li key={index} className='list-disc'>{point}</li>
+              ))}</ul>
             </div>
           </div>
         </ProjectModal>

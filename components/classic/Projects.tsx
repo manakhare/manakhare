@@ -27,24 +27,27 @@ function Projects() {
               whileInView={{opacity: 1, y: 0, x: 0, scale: 1}}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className='p-24 flex justify-center items-center col-span-5 bg-amber-900'>
-                item
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 }}}
+              className='p-24 cursor-pointer flex justify-center items-center col-span-5 bg-amber-900 font-bold uppercase text-amber-50 text-2xl tracking-wider'>
+                Whizz
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: -10, scale: 0.5 }}
               whileInView={{opacity: 1, y: 0, scale: 1}}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className='p-24 flex justify-center items-center col-span-3 bg-amber-800'>
-                item
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 }}}
+              className='p-24 cursor-pointer flex justify-center items-center col-span-3 bg-amber-800 font-bold uppercase text-amber-50 text-2xl'>
+                Medium
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: -10, scale: 0.5 }}
               whileInView={{opacity: 1, y: 0, scale: 1}}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className='p-24 flex justify-center items-center col-span-2 bg-amber-900'>
-                item
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 }}}
+              className='p-2 cursor-pointer 4 flex justify-center items-center col-span-2 bg-amber-900 font-bold uppercase text-amber-50 text-2xl'>
+                Bookish-portfolio
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: -10, scale: 0.5 }}
@@ -59,24 +62,27 @@ function Projects() {
               whileInView={{opacity: 1, y: 0, scale: 1}}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className='p-24 flex justify-center items-center col-span-2 bg-amber-900'>
-                item
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 }}}
+              className='p-24 cursor-pointer flex justify-center items-center col-span-2 bg-amber-900 font-bold uppercase text-amber-50 text-2xl'>
+                Expense-tracker
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: -10, scale: 0.5 }}
               whileInView={{opacity: 1, y: 0, scale: 1}}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className='p-24 flex justify-center items-center col-span-3 bg-amber-800'>
-                item
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 }}}
+              className='p-24 cursor-pointer flex justify-center items-center col-span-3 bg-amber-800 font-bold uppercase text-amber-50 text-2xl'>
+                Threads
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: -10, scale: 0.5 }}
               whileInView={{opacity: 1, y: 0, scale: 1}}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className='p-24 flex justify-center items-center col-span-5 bg-amber-900'>
-                item
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 }}}
+              className='p-24 cursor-pointer flex justify-center items-center col-span-5 bg-amber-900 font-bold uppercase text-amber-50 text-2xl'>
+                Let us chat
             </motion.div>
         </motion.div>
     </motion.div>

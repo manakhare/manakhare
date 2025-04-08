@@ -10,14 +10,11 @@ import Contact from '@/components/classic/Contact';
 import Link from 'next/link';
 
 
-
-
-
 export default function Classic() {
   return (
     <div className='w-screen min-h-screen bg-amber-50 flex flex-col items-center justify-center scroll-smooth'>
 
-      <div className='w-[80%] h-full flex flex-col justify-start items-start'>
+      <div className='w-full md:w-[80%] h-full flex flex-col justify-start items-start'>
 
         <div className='w-full flex flex-col justify-center items-center py-5 bg-amber-800'>
           <motion.div
@@ -38,7 +35,7 @@ export default function Classic() {
           </motion.div>
         </div>
 
-        <div className='w-full'>
+        <div className='w-full hidden lg:block'>
           <motion.nav
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

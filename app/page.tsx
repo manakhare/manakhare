@@ -7,6 +7,14 @@ import { IoIosPaper, IoMdDownload } from "react-icons/io";
 
 
 export default function Entry() {
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/Resume_Mana_7April25.pdf';
+    link.download = 'Mana_Khare_Resume.pdf';
+    link.click();
+  };
+
   return (
     <div className="w-screen h-screen flex justify-center items-center bg-[url(/background3.jpg)] bg-no-repeat bg-center bg-cover bg-opacity-50">
       <div className="w-[70%] h-full gap-4 lg:w-[70%] lg:h-[70%] flex flex-col justify-center lg:justify-start items-center text-center lg:gap-4">
@@ -43,19 +51,9 @@ export default function Entry() {
             className="text-2xl lg:text-2xl font-normal text-amber-900 w-full flex justify-center items-center font-serif"
           >
             <div className="w-full lg:w-[70%] flex flex-col gap-4">
-              <div>As an avid reader, I've crafted my portfolio to reflect that passion – choose between my book-inspired version or the classic for a quicker look!</div>
-              {/* <div>There are two ways you can experience my work.</div> */}
-
-              {/* <ul className="list-disc flex flex-col gap-4">
-                    <li>
-                    <span className="font-semibold">The Bookish Portfolio: </span>Since I'm an avid reader, I’ve designed this version of my portfolio with a book-inspired theme. If you're in the mood for something a little more creative, this is for you!
-                    </li>
-                    <li>
-                    <span className="font-semibold">The Classic Portfolio: </span>If you're short on time and just want to get straight to the essentials, this is the quick and easy option.
-                    </li>      
-                  </ul> */}
-              {/* <div>I am an avid reader, which led me to build my portfolio inspired by books. So if you want to experience something new, then you can go for my bookish-portfolio</div>  
-                  <div>And if you are in a hurry, then go for my basic portfolio.</div> */}
+              {/* <div>As an avid reader, I've crafted my portfolio to reflect that passion – choose between my book-inspired version or the classic for a quicker look!</div> */}
+              <div>As an avid reader, I've crafted my portfolio to reflect that passion!</div>
+              
             </div>
           </motion.h2>
         </AnimatePresence>
@@ -79,14 +77,16 @@ export default function Entry() {
                         <span><GiSecretBook /></span>Bookish</button>
                     </div>
                   </Link>
-                  <Link href='/classic'>
+                  {/* <Link href='/classic'>
                     <div className="py-2 px-4 bg-amber-900 text-white rounded-lg hover:bg-amber-800 cursor-pointer">
                       <button className="cursor-pointer flex gap-2 items-center justify-center"><span><IoIosPaper /></span>Classic</button>
                     </div>
-                  </Link>
+                  </Link> */}
                 </div>
                 <div className="py-2 px-4 bg-amber-900 text-white rounded-lg hover:bg-amber-800 cursor-pointer">
-                  <button className="cursor-pointer flex gap-2 items-center justify-center"><span><IoMdDownload /></span>Resume</button>
+                  <button
+                    onClick={handleDownload}
+                   className="cursor-pointer flex gap-2 items-center justify-center"><span><IoMdDownload /></span>Resume</button>
                 </div>
               </div>
             </motion.h2>

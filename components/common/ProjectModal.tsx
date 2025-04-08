@@ -10,15 +10,15 @@ interface ProjectModalProps {
     github: string;
     demo?: string;
     techStack: string[];
-    detailedDescription: string;
+    detailedDescription: string[];
     onClose: () => void;
     children: ReactNode
   }
 
 export function ProjectModal({ name, github, demo, techStack, description, onClose, children }: ProjectModalProps) {
   // const points = description?.split('.').pop() ? [description.split('.').pop()!] : [];
-  const points = description.split('.');
-  points.pop();
+  // const points = description.split('.');
+  // points.pop();
   
   return (
     <motion.div

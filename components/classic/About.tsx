@@ -11,9 +11,9 @@ Here is all that you need to know about me.`;
 
 function About() {
     return (
-        <div className='bg-amber-100'>
+        <div className='bg-amber-100 flex flex-col items-center justify-center'>
             <div className='w-full justify-center items-center flex flex-col pt-10'>
-                <div className='w-[10%] h-50 border-4 border-amber-900 shadow-sm flex justify-center items-center py-10 rounded-full bg-[url(/Cropped.png)] bg-cover bg-scale  bg-center bg-no-repeat'>
+                <div className='w-[30%] lg:w-[10%] h-50 border-4 border-amber-900 shadow-sm flex justify-center items-center py-10 rounded-full bg-[url(/Cropped.png)] bg-cover bg-scale  bg-center bg-no-repeat'>
                     {/* <Image src='/Cropped.png' height={50} width={50} alt='image'/> */}
                 </div>
             </div>
@@ -22,7 +22,7 @@ function About() {
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
-                className='px-32 mx-32 py-5 tracking-wide font-serif text-lg text-amber-900 text-center'
+                className='w-full px-32 mx-32 py-5 tracking-wide font-serif text-lg text-amber-900 text-center'
             >
                 {FULL_TEXT}
             </motion.div>
