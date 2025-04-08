@@ -16,7 +16,7 @@ export const MobileNav = ({ isOpen, onClose, navigateTo }: MobileNavProps) => {
 
     const menuItems_primary = [
         { name: 'Home', path: '/' },
-        { name: 'Classic', path: '/classic' },
+        // { name: 'Classic', path: '/classic' },
         { name: 'Bookish', path: '/bookish' },
         { name: 'Resume', path: '/resume' },
     ];

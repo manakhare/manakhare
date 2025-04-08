@@ -99,7 +99,7 @@ export default function SideNav({ navigateTo, currentPage }: SideNavProps) {
 
     const navItems_secondary = [
       {initial: 'H', name: 'Home', page: '/'},
-      {initial: 'C', name: 'Classic', page: '/classic'},
+      // {initial: 'C', name: 'Classic', page: '/classic'},
       {initial: 'R', name: 'Resume', page: '/resume'},
     ]
 
